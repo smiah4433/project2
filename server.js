@@ -42,7 +42,7 @@ db.on('disconnected', () => { console.log('mongo disconnected') })
 
 ///////New Route////////
 app.get('/movies/new', (req, res) =>{
-  Movies.find({}, (err, allMovies) => {
+  Movies.find({}, (error, allMovies) => {
     res.render('new.ejs', {
       movies: allMovies
     })
@@ -51,32 +51,71 @@ app.get('/movies/new', (req, res) =>{
 
 ///////Index Route/////////
 app.get('/movies', (req, res) => {
-  Movies.find({}, (err, allMovies) => {
+  Movies.find({}, (error, allMovies) => {
     res.render('index.ejs', {
       movies: allMovies
     })
   })
 })
 
+////////Post Route(Create)///////////
+app.post('/movies', (req, res) => {
+  Movies.create(req.body, (error, createdMovies) => {
+    if(error) {
+      res.send(error)
+    } else {
+      res.redirect('/movies')
+    }
+  })
+})
 
 ///////Show Route/////////
 app.get('/movies/:id', (req, res) => {
-  Movies.findById(req.params.id, (err, foundMovies) => {
+  Movies.findById(req.params.id, (error, foundMovies) => {
     console.log(foundMovies);
     res.render('show.ejs', {
       movies: foundMovies
     })
-  })   
+  })
 })
 
 ///////Delete Route///////
-
+app.delete('/movies/:id/', (req, res) => {
+  Movies.findByIdAndDelete(req.params.id, (error, deletedMovies) => {
+    if(error){
+      res.send(error)
+    } else {
+      res.redirect('/movies')
+    }
+  })
+})
 
 
 
 ///////Edit Route////////
 app.get('/movies/:id/edit', (req, res) => {
-  res.render('edit.ejs')
+  Movies.findById(req.params.id, (error, foundMovies) => {
+    if(error) {
+      res.send(error)
+    } else {
+      res.render('edit.ejs', {
+        movies: foundMovies
+      })
+    }
+  })
+})
+
+/////////Update Route/////////
+app.get('/movies/:id', (req, res) => {
+  Movies.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  }, (error, updatedMovies) => {
+    if(error) {
+      res.send(error)
+    } else {
+      res.redirect('/movies')
+    }
+  })
 })
 
 

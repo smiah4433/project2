@@ -2,18 +2,30 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Show Page</title>
   </head>
   <body>
-    <h1>Show Page</h1>
-    <div class="title">
-      <h2>title: <%=movies.title%></h2>
-    </div>
-    <div class="img">
-      <h3> <img src="<%=movies.img%>"></h3>
-    </div>
-    <div class="rating">
-      <h4>Rating: <%=movies.rating%></h4>
+    <div class="body-overlay">
+      <!-------- Header ---------->
+      <header>
+        <h1 class="show-h1">Sitcom Movie Page</h1>
+    <nav>
+        <ul>
+          <li><a href="/movies"class="main-link">Main Page</a></li>
+          <li><a href="/movies/new"class="main-edit">Edit Movie</a></li>
+        </ul>
+        <form  action="/movies/<%=movies._id%>?_method=DELETE" method="POST">
+              <input class="delete-button" type="submit" value="Delete">
+      </form>
+    </nav>
+      </header>
+      <!-----------Main  ------------->
+      <main class = "show-main">
+        <h2 class="title">Title: <%=movies.title%></h2>
+        <img class="show-image" src="<%=movies.img%>">
+        <h2>Rating: <%=movies.rating%></h2>
+      </main>
     </div>
   </body>
 </html>

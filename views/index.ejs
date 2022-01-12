@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css">
-    <title>LateNight Home Page</title>
+    <title>Sitcom</title>
   </head>
   <body>
     <!-- <h1>Movies</h1> -->
-      <nav>
+    <nav>
         <!-- Logo -->
         <a href="#" class="logo">
           <img src="https://i.pinimg.com/736x/0c/32/97/0c3297f3516a415219c7e89e16a4a3d2.jpg" alt="Logo">
@@ -22,20 +22,27 @@
           <li><a href="#">Sign Up</a></li>
           <li><a href="#">Sign In</a></li>
         </ul>
-      </nav>
-      <section id="main">
-        <h1 class="movies-heading">Movies</h1>
-        <% for( let i = 0; i < movies.length; i++) {%>
-        <div class="title">
-          <h2>Title: <%=movies[i].title%></h2>
+    </nav>
+    <section id="main">
+      <h1 class="movies-heading">Movies</h1>
+        <div class="movie-container">
+              <% for( let i = 0; i < movies.length; i++) {%>
+            <div class="img">
+              <a href="/movies/<%=movies[i]._id%>"><img class="small-poster" src="<%=movies[i].img%>"></a>
+            </div>
+            <%} %>
         </div>
-        <div class="img">
-          <h3> <img src="<%=movies[i].img%>"></h3>
+    </section>
+
+    <section id="Shows">
+      <h1 class="Shows-heading">Shows</h1>
+        <div class="Shows-container">
+              <% for( let i = 0; i < shows.length; i++) {%>
+            <div class="img-shows">
+              <a href="/movies/<%=shows[i]._id%>"><img class="shows-poster" src="<%=shows[i].img%>"></a>
+            </div>
+            <%} %>
         </div>
-        <div class="rating">
-          <h4>Rating: <%=movies[i].rating%></h4>
-        </div>
-      </section>
-      <%} %>
+    </section>
   </body>
 </html>
