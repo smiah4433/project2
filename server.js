@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const methodOverride = require('method-override')
-const PORT = 3000
+
 
 
 ////////Custom Middleware/////////
@@ -13,14 +13,19 @@ app.use(methodOverride('_method'))
 ///////Require Public////////
 app.use(express.static('public'))
 
+/////////Require .env//////////
+require('dotenv').config()
+const PORT = process.env.PORT
+
 ///////Require Models//////
 const Movies = require('./models/movies')
+
 
 ///////Set Up Database//////
 const mongoose = require('mongoose')
 
 ///////Name of the Database//////
-const mongoURI = 'mongodb://127.0.0.1:27017/movies'
+const mongoURI = process.env.MONGO_URI
 const db = mongoose.connection
   mongoose.connect(mongoURI, {
     useNewUrlParser: true,
