@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>LateNight Home Page</title>
+  </head>
+  <body>
+    <!-- <h1>Movies</h1> -->
+      <nav>
+        <!-- Logo -->
+        <a href="#" class="logo">
+          <img src="https://i.pinimg.com/736x/0c/32/97/0c3297f3516a415219c7e89e16a4a3d2.jpg" alt="Logo">
+        </a>
+        <!-- Menu -->
+        <ul class ="menu">
+          <li><a href="movies/">Home</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Shows</a></li>
+          <li><a href="movies/new">Upload</a></li>
+          <!-- <li><a href="movies/:id">Edit</a></li> -->
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Sign In</a></li>
+        </ul>
+      </nav>
+      <section id="main">
+        <h1 class="movies-heading">Movies</h1>
+        <% for( let i = 0; i < movies.length; i++) {%>
+        <div class="title">
+          <h2>Title: <%=movies[i].title%></h2>
+        </div>
+        <div class="img">
+          <h3> <img src="<%=movies[i].img%>"></h3>
+        </div>
+        <div class="rating">
+          <h4>Rating: <%=movies[i].rating%></h4>
+        </div>
+      </section>
+      <%} %>
+  </body>
+</html>
