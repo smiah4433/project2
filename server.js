@@ -43,89 +43,24 @@ db.on('disconnected', () => { console.log('mongo disconnected') })
 
 
 //=============================
-//        ROUTES
-//=============================
-
-///////New Route////////
-app.get('/movies/new', (req, res) =>{
-  Movies.find({}, (error, allMovies) => {
-    res.render('new.ejs', {
-      movies: allMovies
-    })
-  })
-})
-
-const allShows = Show.find({}, (error, foundShows) => {
-  shows = foundShows
-})
-///////Index Route/////////
-app.get('/movies', (req, res) => {
-  Movies.find({}, (error, allMovies) => {
-    res.render('index.ejs', {
-      movies: allMovies, shows: shows
-    })
-  })
-})
-
-///////Show Route/////////
-app.get('/movies/:id', (req, res) => {
-  Movies.findById(req.params.id, (error, foundMovies) => {
-    console.log(foundMovies);
-    res.render('show.ejs', {
-      movies: foundMovies,
-    })
-  })
-})
-
-////////Post Route(Create)///////////
-app.post('/movies/:id', (req, res) => {
-  Movies.create(req.body, (error, createdMovies) => {
-    if(error) {
-      res.send(error)
-    } else {
-      res.redirect('/movies')
-    }
-  })
-})
-
-///////Delete Route///////
-app.delete('/movies/:id', (req, res) => {
-  Movies.findByIdAndDelete(req.params.id, (error, deletedMovies) => {
-    if(error){
-      res.send(error)
-    } else {
-      res.redirect('/movies')
-    }
-  })
-})
-
-
-
-///////Edit Route////////
-app.get('/movies/:id/edit', (req, res) => {
-  Movies.findById(req.params.id, (error, foundMovies) => {
-    if(error) {
-      res.send(error)
-    } else {
-      res.render('edit.ejs', {
-        movies: foundMovies
+//        ROUTES/CONTROLLER
+//============================
+app.get('/', (req, res) => {
+  Show.find({}, (error, allShows) => {
+    Movies.find({}, (error, allMovies) => {
+      res.render('home.ejs', {
+        movies: allMovies, shows: allShows
       })
-    }
+    })
   })
 })
 
-/////////Update Route/////////
-app.put('/movies/:id', (req, res) => {
-  Movies.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  }, (error, updatedMovies) => {
-    if(error) {
-      res.send(error)
-    } else {
-      res.redirect('/movies')
-    }
-  })
-})
+//////Makes the controller accessiable in this file////////////
+const moviesController = require("./controllers/moviesController")
+const showsController = require("./controllers/showsController")
+///////// looks like setting up middleware//////////
+app.use("/movies", moviesController)   ///Sets up the congig to use controllers
+app.use("/shows", showsController)
 
 
 

@@ -1,0 +1,26 @@
+
+  <%- include("../partials/movies-head.ejs") %>
+      <form  action="/shows/<%=shows._id%>?_method=DELETE" method="POST">
+          <div class="body-overlay">
+              <!-------- Header ---------->
+                  <header>
+                      <h1 class="show-h1">Sitcom Show Page</h1>
+                        <nav>
+                          <ul>
+                            <li><a href="/shows"class="main-link">Main Page</a></li>
+                            <li><a href="/shows/<%=shows._id %>/edit"class="main-edit">Edit</a></li>
+                          </ul>
+                          <input class="delete-button" type="submit" value="Delete">
+                        </nav>
+                  </header>
+      <!-------------Main  ------------->
+            <main class = "show-main">
+                  <h2 class="title">Title: <%=shows.title%></h2>
+                  <img class="show-image" src="<%=shows.img%>">
+                  <h2>Rating: <%=shows.rating%></h2>
+            </main>
+
+          </div>
+      </form>
+  </body>
+</html>
