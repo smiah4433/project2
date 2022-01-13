@@ -67,8 +67,18 @@ app.get('/movies', (req, res) => {
   })
 })
 
+///////Show Route/////////
+app.get('/movies/:id', (req, res) => {
+  Movies.findById(req.params.id, (error, foundMovies) => {
+    console.log(foundMovies);
+    res.render('show.ejs', {
+      movies: foundMovies,
+    })
+  })
+})
+
 ////////Post Route(Create)///////////
-app.post('/movies', (req, res) => {
+app.post('/movies/:id', (req, res) => {
   Movies.create(req.body, (error, createdMovies) => {
     if(error) {
       res.send(error)
@@ -78,18 +88,8 @@ app.post('/movies', (req, res) => {
   })
 })
 
-///////Show Route/////////
-app.get('/movies/:id', (req, res) => {
-  Movies.findById(req.params.id, (error, foundMovies) => {
-    console.log(foundMovies);
-    res.render('show.ejs', {
-      movies: foundMovies
-    })
-  })
-})
-
 ///////Delete Route///////
-app.delete('/movies/:id/', (req, res) => {
+app.delete('/movies/:id', (req, res) => {
   Movies.findByIdAndDelete(req.params.id, (error, deletedMovies) => {
     if(error){
       res.send(error)
@@ -115,7 +115,7 @@ app.get('/movies/:id/edit', (req, res) => {
 })
 
 /////////Update Route/////////
-app.get('/movies/:id', (req, res) => {
+app.put('/movies/:id', (req, res) => {
   Movies.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   }, (error, updatedMovies) => {

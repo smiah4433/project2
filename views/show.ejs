@@ -1,31 +1,35 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css">
     <title>Show Page</title>
   </head>
-  <body>
-    <div class="body-overlay">
-      <!-------- Header ---------->
-      <header>
-        <h1 class="show-h1">Sitcom Movie Page</h1>
-    <nav>
-        <ul>
-          <li><a href="/movies"class="main-link">Main Page</a></li>
-          <li><a href="/movies/new"class="main-edit">Edit Movie</a></li>
-        </ul>
-        <form  action="/movies/<%=movies._id%>?_method=DELETE" method="POST">
-              <input class="delete-button" type="submit" value="Delete">
+  <body> -->
+  <%- include("./partials/movies-head.ejs") %>
+    <fieldset>
+      <form  action="/movies/<%=movies._id%>?_method=DELETE" method="POST">
+          <div class="body-overlay">
+              <!-------- Header ---------->
+                  <header>
+                      <h1 class="show-h1">Sitcom Movie Page</h1>
+                        <nav>
+                          <ul>
+                            <li><a href="/movies"class="main-link">Main Page</a></li>
+                            <li><a href="/movies/<%=movies._id %>/edit"class="main-edit">Edit Movie</a></li>
+                          </ul>
+                          <input class="delete-button" type="submit" value="Delete">
+                        </nav>
+                  </header>
+      <!-------------Main  ------------->
+            <main class = "show-main">
+                  <h2 class="title">Title: <%=movies.title%></h2>
+                  <img class="show-image" src="<%=movies.img%>">
+                  <h2>Rating: <%=movies.rating%></h2>
+            </main>
+
+          </div>
       </form>
-    </nav>
-      </header>
-      <!-----------Main  ------------->
-      <main class = "show-main">
-        <h2 class="title">Title: <%=movies.title%></h2>
-        <img class="show-image" src="<%=movies.img%>">
-        <h2>Rating: <%=movies.rating%></h2>
-      </main>
-    </div>
+    </fieldset>
   </body>
 </html>

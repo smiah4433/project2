@@ -27,8 +27,8 @@ nav{
 }
 
 .logo img{
-  height: 55px;
-  border-radius: 10px;
+  height: 65px;
+  border-radius: 20px;
 
 }
 
@@ -174,5 +174,73 @@ nav{
   display: grid;
   grid-auto-flow: column;
   gap: 20px;
-  overflow-x: auto; 
+  overflow-x: auto;
+}
+
+.new-h1{
+  color: #37d0d4;
+  text-align: center;
+  font-size: 60px;
+}
+
+.new-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #10c5c9;
+}
+
+.text{
+  width: 145px;
+  margin-left: 200px;
+}
+
+.url{
+  width: 145px;
+  margin-left: 200px;
+}
+
+.number{
+  width: 145px;
+  margin-left: 200px;
+}
+
+.submit{
+  width: 145px;
+  margin-left: 200px;
+}
+
+.back-home{
+  font-size: 80px;
+  font-style: italic;
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+.edit-h1{
+  font-size: 40px;
+  color: #37d0d4;
+  text-align: center;
+}
+
+.back-home{
+  font-size: 20px;
+  color: #37d0d4;
+  margin-left: -420px;
+}
+
+.edit-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #10c5c9;
+}
+
+.edit-title{
+  margin-top: -100px;
+  font-weight: 40px;
+  font-family: fantasy;
+  color: #bfc2c9;
 }

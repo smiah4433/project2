@@ -1,10 +1,36 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Edit Page</title>
-  </head>
-  <body>
-    <h1>Edit Page</h1>
+<head>
+  <meta charset="utf-8">
+  <title>Edit Page</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+  <body> -->
+  <%- include("./partials/movies-head.ejs") %>
+    <fieldset>
+      <header>
+        <h1 class = "edit-h1">Edit Page</h1>
+      </header>
+        <main class="edit-main">
+          <form action="/movies/<%=movies.id%>?_method=PUT" method="POST">
+              <div class="edit-overlay">
+                <nav>
+                  <ul>
+                    <a class="back-home"href="/movies">Back to Home Page</a>
+                  </ul>
+                </nav>
+                <main class="edit-main">
+                  <h2 class="edit-title">Title: <%=movies.title%></h2>
+                  <img class="show-image" src="<%=movies.img%>"/>
+                  <h2>Rating: <%=movies.rating%></h2>
+                  <input type="text" class="edit-text" placeholder="name" name="name" style="height: 40px;"/><br>
+                  <input type="url" class="edit-url" placeholder="image" name="img" style="height: 40px;"/><br>
+                  <input type="number" class="edit-number" placeholder="rating" name="rating" style="height: 40px;"/><br>
+                  <a href="/movies"><input type="submit" class="edit-submit" value="Edit Item"></a> <br>
+                </main>
+              </div>
+          </form>
+        </main>
+    </fieldset>
   </body>
 </html>
