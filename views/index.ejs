@@ -34,14 +34,14 @@
         </div>
     </section>
 
-    <section id="Shows">
-      <h1 class="Shows-heading">Shows</h1>
-        <div class="Shows-container">
-              <% for( let i = 0; i < shows.length; i++) {%>
+    <section id="shows">
+      <h1 class="shows-heading">Shows</h1>
+        <div class="shows-container">
+            <% for(let i = 0; i < shows.length; i++) {%>
             <div class="img-shows">
-              <a href="/movies/<%=shows[i]._id%>"><img class="shows-poster" src="<%=shows[i].img%>"></a>
+              <a href="#"><img class = "shows-poster" src="<%=shows[i].img%>"></a>"
             </div>
-            <%} %>
+            <%}%>
         </div>
     </section>
   </body>

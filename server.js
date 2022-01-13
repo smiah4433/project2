@@ -19,6 +19,7 @@ const PORT = process.env.PORT
 
 ///////Require Models//////
 const Movies = require('./models/movies')
+const Show = require('./models/shows')
 
 
 ///////Set Up Database//////
@@ -54,11 +55,14 @@ app.get('/movies/new', (req, res) =>{
   })
 })
 
+const allShows = Show.find({}, (error, foundShows) => {
+  shows = foundShows
+})
 ///////Index Route/////////
 app.get('/movies', (req, res) => {
   Movies.find({}, (error, allMovies) => {
     res.render('index.ejs', {
-      movies: allMovies
+      movies: allMovies, shows: shows
     })
   })
 })
