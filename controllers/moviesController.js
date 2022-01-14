@@ -3,6 +3,22 @@ const express = require('express')
 const router = express.Router()
 const Movies = require('../models/movies')
 
+//custom MIDDLEWARE to require authentication on routes
+            // THIS IS CREATING THE MUST BE LOGGED IN TO DO STUFF ///
+            const authRequired = (req, res, next) => {
+              if (req.session.currentUser) {
+                // a user is signed in
+                next()
+                // next is part of Express
+                // it does what is says
+                // i.e go on to the next thing
+              }else{
+                // if there is no user
+                // make this an alert -> // res.send(‘you must be logged in to do that.‘)
+                res.redirect('/users/signin')
+              }
+            }
+
 
 
 //=============================
@@ -29,7 +45,7 @@ router.get('/', (req, res) => {
   })
 
 ///////Movie show Route/////////
-router.get('/:id', (req, res) => {
+router.get('/:id', authRequired, (req, res) => {
   Movies.findById(req.params.id, (error, foundMovies) => {
     console.log(foundMovies);
     res.render('movies/show.ejs', {

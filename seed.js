@@ -3,7 +3,10 @@ const Shows = require('./models/shows')
 const mongoose = require('mongoose')
 
 ///////Name of the Database//////
+//local host
 const mongoURI = 'mongodb://127.0.0.1:27017/movies'
+//heroku app
+// const mongoURI = 'mongodb+srv://smiah4433:football0818@cluster0.jcoek.mongodb.net/sitcomcomedy?retryWrites=true&w=majority'
 const db = mongoose.connection
   mongoose.connect(mongoURI, {
     useNewUrlParser: true,
