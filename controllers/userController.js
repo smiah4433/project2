@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
       User.create(req.body, (error, createdUser) => {
         // res.send(‘user created’)
         req.session.currentUser = createdUser
-        res.redirect('/users')
+        res.redirect('/')
       })
     }
   })
