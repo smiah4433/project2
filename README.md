@@ -25,7 +25,7 @@ Dont know what show to get into?? Feeling like you need a laugh after a long day
 ##MVP Goals
 Have users sign in if they decide to go
 
-##Framework-
+##WireFrame-
 https://www.figma.com/file/TEZ8Z9bMlvAS6svOQQDyOS/Project-2?node-id=5%3A2
 
 
