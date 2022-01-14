@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
       User.create(req.body, (error, createdUser) => {
         // res.send(‘user created’)
         req.session.currentUser = createdUser
-        res.redirect('/home')
+        res.redirect('/users')
       })
     }
   })
@@ -51,7 +51,7 @@ router.post('/signin', (req, res) => {
         req.session.currentUser = foundUser
         // we are letting session know
         // that we have logged in
-        res.redirect('/home')
+        res.redirect('/')
       } else {
         // if they don’t match, send a message
         res.send('Invalid username or password')

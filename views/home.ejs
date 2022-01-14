@@ -11,18 +11,21 @@
       <li><a href="/movies">Movies</a></li>
       <li><a href="/shows">Shows</a></li>
       <li><a href="/movies/new">Upload</a></li>
-      <!-- <li><a href="movies/:id">Edit</a></li> -->
-      <li><a href="#">Sign Up</a></li>
-      <li><a href="#">Sign In</a></li>
+      <li><a href="/users/register">Sign Up</a></li>
+      <li><a href="/users/signin">Sign In</a></li>
     </ul>
 </nav>
 
     <section id="main">
       <h1 class="movies-heading">Movies</h1>
         <div class="movie-container">
-              <% for( let i = 0; i < movies.length; i++) {%>
+              <% for( let i = 0; i < 5; i++) {%>
+                <% let random = 0 %>
+                  <% for (let j = 0; j < Math.floor(Math.random() * movies.length); j++) { %>
+                  <% random++ %>
+                <% } %>
             <div class="img">
-              <a href="/movies/<%=movies[i]._id%>"><img class="small-poster" src="<%=movies[i].img%>"></a>
+              <a href="/movies/<%=movies[random]._id%>"><img class="small-poster" src="<%=movies[random].img%>"></a>
             </div>
             <%} %>
         </div>
@@ -31,9 +34,13 @@
     <section id="shows">
       <h1 class="shows-heading">Shows</h1>
         <div class="shows-container">
-            <% for(let i = 0; i < shows.length; i++) {%>
+            <% for(let i = 0; i < 5; i++) {%>
+              <% let random = 0 %>
+                <% for (let j = 0; j< Math.floor(Math.random() * shows.length); j++) { %>
+                  <% random++ %>
+                <% } %>
             <div class="img-shows">
-              <a href="/shows/<%=shows[i]._id%>"><img class = "shows-poster" src="<%=shows[i].img%>"></a>"
+              <a href="/shows/<%=shows[random]._id%>"><img class = "shows-poster" src="<%=shows[random].img%>"></a>"
             </div>
             <%}%>
         </div>

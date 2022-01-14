@@ -15,7 +15,7 @@ const Movies = require('../models/movies')
               }else{
                 // if there is no user
                 // make this an alert -> // res.send(‘you must be logged in to do that.‘)
-                res.redirect('/users/signin')
+                res.redirect('/users/register')
               }
             }
 
